@@ -6,10 +6,7 @@ import com.alicp.jetcache.anno.CreateCache;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +22,11 @@ public class UserController {
     @GetMapping("/getAll")
     public List<User> getAll(@RequestParam String name) {
         return userService.getAll(name);
+    }
+
+    @PostMapping("/add")
+    public int add(@RequestBody User user) {
+        return userService.add(user);
     }
 
 }

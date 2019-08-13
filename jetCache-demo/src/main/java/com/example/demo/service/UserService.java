@@ -18,4 +18,11 @@ public interface UserService {
      */
     List<User> getAll(String name);
 
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
+    int add(User user);
+
 }

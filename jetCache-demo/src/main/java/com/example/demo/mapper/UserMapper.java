@@ -15,4 +15,9 @@ public interface UserMapper {
     })
     List<User> getAll(String name);
 
+
+    @Insert("INSRT INTO user(name) VALUS(#name)")
+    int insert(User user);
+
+
 }
