@@ -2,6 +2,7 @@ package com.example.demo.serviceimpl;
 
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
+import com.alicp.jetcache.anno.Cached;
 import com.alicp.jetcache.anno.CreateCache;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final String CACHE_NAME = "user:";
+    private static final String CACHE_NAME = "UserService:getAll";
 
     @Autowired
     private UserMapper userMapper;
@@ -25,16 +26,20 @@ public class UserServiceImpl implements UserService {
     private Cache<String, List<User>> userListCache;
 
     @Override
+    @Cached(name = CACHE_NAME ,key = "#name")
     public List<User> getAll(String name) {
 
-        List<User> userList = userListCache.get(name);
-        if (userList != null && userList.size() > 0) {
-            return userList;
-        } else {
-            userList = userMapper.getAll(name);
-            userListCache.put(name,userList,1l,TimeUnit.MINUTES);
-            return userList;
-        }
+//        List<User> userList = userListCache.get(name);
+//        if (userList != null && userList.size() > 0) {
+//            return userList;
+//        } else {
+//            userList = userMapper.getAll(name);
+//            userListCache.put(name,userList,1L,TimeUnit.MINUTES);
+//            return userList;
+//        }
+
+        return userMapper.getAll(name);
+
     }
 
 }
