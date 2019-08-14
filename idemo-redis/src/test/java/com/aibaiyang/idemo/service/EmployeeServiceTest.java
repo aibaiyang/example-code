@@ -1,10 +1,16 @@
 package com.aibaiyang.idemo.service;
 
+import com.aibaiyang.idemo.entity.Employee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author gz
@@ -18,11 +24,36 @@ public class EmployeeServiceTest {
     @Autowired
     private EmployeeService employeeService;
 
-    @Test
-    public void findByNameTest(){
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-        System.out.println(employeeService.findByName("gz"));
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Test
+    public void stringRedisTemplateTest(){
+
+        stringRedisTemplate.opsForValue().set("aaa", "111");
+        System.out.println(stringRedisTemplate.opsForValue().get("aaa"));
 
     }
+
+    @Test
+    public void redisTemplateTest(){
+
+        Employee employee = new Employee();
+        employee.setId(8)
+                .setCode("by")
+                .setName("by");
+
+        ValueOperations<String, Employee> employeeCache = redisTemplate.opsForValue();
+        employeeCache.set(employee.getCode(),employee ,10 ,TimeUnit.SECONDS);
+        System.out.println(employeeCache.get(employee.getCode()));
+
+    }
+
+
+
+
 
 }

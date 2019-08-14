@@ -1,6 +1,7 @@
 package com.aibaiyang.idemo.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.io.Serializable;
  **/
 @Entity
 @Data
+@Accessors(chain = true)
 public class Employee implements Serializable {
 
     @Id
