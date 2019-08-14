@@ -23,6 +23,18 @@ public interface UserService {
      * @param user
      * @return
      */
-    int add(User user);
+    void add(User user);
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    void update(User user);
+
+    /**
+     * 删除用户
+     * @param user
+     */
+    void delete(User user);
 
 }

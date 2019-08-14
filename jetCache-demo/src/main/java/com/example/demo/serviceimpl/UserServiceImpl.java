@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     private Cache<String, List<User>> userListCache;
 
     @Override
-    @Cached(name = CACHE_NAME ,key = "#name")
-    public List<User> getAll(String name) {
+    @Cached(name = CACHE_NAME ,key = "#code")
+    public List<User> getAll(String code) {
 
 //        List<User> userList = userListCache.get(name);
 //        if (userList != null && userList.size() > 0) {
@@ -38,13 +38,29 @@ public class UserServiceImpl implements UserService {
 //            return userList;
 //        }
 
-        return userMapper.getAll(name);
+        return userMapper.getAll(code);
 
     }
 
     @Override
-    public int add(User user) {
-        return userMapper.insert(user);
+    public void add(User user) {
+         userMapper.insert(user);
+    }
+
+    @Override
+    public void update(User user) {
+        //清除缓存
+        userListCache.remove(user.getCode());
+        //更新数据
+        userMapper.update(user);
+    }
+
+    @Override
+    public void delete(User user) {
+        //清除缓存
+        userListCache.remove(user.getCode());
+        //删除数据
+        userMapper.delete(user.getId());
     }
 
 }

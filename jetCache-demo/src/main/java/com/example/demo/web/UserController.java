@@ -1,16 +1,11 @@
 package com.example.demo.web;
 
-import com.alicp.jetcache.Cache;
-import com.alicp.jetcache.anno.CacheType;
-import com.alicp.jetcache.anno.CreateCache;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/user")
@@ -20,13 +15,23 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/getAll")
-    public List<User> getAll(@RequestParam String name) {
-        return userService.getAll(name);
+    public List<User> getAll(@RequestParam String code) {
+        return userService.getAll(code);
     }
 
     @PostMapping("/add")
-    public int add(@RequestBody User user) {
-        return userService.add(user);
+    public void add(@RequestBody User user) {
+        userService.add(user);
+    }
+
+    @PostMapping("/update")
+    public void update(@RequestBody User user) {
+        userService.update(user);
+    }
+
+    @PostMapping("/delete")
+    public void delete(@RequestParam User user) {
+        userService.delete(user);
     }
 
 }
