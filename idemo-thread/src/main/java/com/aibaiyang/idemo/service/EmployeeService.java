@@ -18,4 +18,16 @@ public interface EmployeeService {
      */
     List<Employee> findByName(String name);
 
+    /**
+     * 无条件查询数据
+     * @return
+     */
+    List<Employee> findAll();
+
+    /**
+     * 新增雇员
+     * @param employee
+     */
+    void add(Employee employee);
+
 }

@@ -24,5 +24,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findByName(name);
     }
 
+    @Override
+    public List<Employee> findAll() {
+        return (List<Employee>) employeeRepository.findAll();
+    }
+
+    @Override
+    public void add(Employee employee) {
+
+        employeeRepository.save(employee);
+
+    }
+
 
 }
