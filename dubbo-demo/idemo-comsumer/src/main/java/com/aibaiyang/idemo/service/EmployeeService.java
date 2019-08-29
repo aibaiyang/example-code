@@ -1,6 +1,7 @@
 package com.aibaiyang.idemo.service;
 
 import com.aibaiyang.idemo.entity.Employee;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @Date 2019/8/14
  * @Description
  **/
+@Service
 public interface EmployeeService {
 
     /**
