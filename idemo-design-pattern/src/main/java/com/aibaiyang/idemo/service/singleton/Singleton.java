@@ -3,7 +3,7 @@ package com.aibaiyang.idemo.service.singleton;
 /**
  * @Author zhong guo
  * @Date 2019/8/31 11:43
- * @description 单例模式
+ * @description 懒汉单例模式
  **/
 public class Singleton {
 
@@ -34,7 +34,6 @@ public class Singleton {
                     instance = new Singleton();
                 }
             }
-            instance = new Singleton();
         }
         return instance;
 

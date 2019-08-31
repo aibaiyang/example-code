@@ -9,6 +9,16 @@ public class SingletonTheadClient {
 
     public static void main(String[] args) {
 
+        //1、懒汉多线程单例测试
+        lazySingletonTest();
+
+        //2、饿汉多线程单例测试
+        hungarySingletonTest();
+
+    }
+
+    static void lazySingletonTest(){
+
         MyThread myThread = new MyThread();
 
         //线程1
@@ -19,6 +29,19 @@ public class SingletonTheadClient {
 
         thread1.start();
         thread2.start();
+
+    }
+
+    static void hungarySingletonTest(){
+
+        //线程1
+        HungaryThread hungaryThread1 = new HungaryThread();
+
+        //线程2
+        HungaryThread hungaryThread2 = new HungaryThread();
+
+        hungaryThread1.start();
+        hungaryThread2.start();
 
     }
 
