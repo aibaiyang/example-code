@@ -1,4 +1,4 @@
-package com.aibaiyang.idemo.service.simplefactorypattern;
+package com.aibaiyang.idemo.service.simplefactory;
 
 /**
  * 减法类
