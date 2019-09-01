@@ -19,7 +19,7 @@ public class SingletonTheadClient {
 
     static void lazySingletonTest(){
 
-        MyThread myThread = new MyThread();
+        LazyThread myThread = new LazyThread();
 
         //线程1
         Thread thread1 = new Thread(myThread);

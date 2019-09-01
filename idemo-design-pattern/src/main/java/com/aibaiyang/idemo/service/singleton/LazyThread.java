@@ -3,9 +3,9 @@ package com.aibaiyang.idemo.service.singleton;
 /**
  * @Author zhong guo
  * @Date 2019/8/31 11:55
- * @description
+ * @description 懒汉线程
  **/
-public class MyThread implements Runnable{
+public class LazyThread implements Runnable{
 
     @Override
     public void run() {
