@@ -11,7 +11,7 @@ import org.apache.rocketmq.common.message.Message;
  **/
 public class ProviderDemo {
 
-    private static final String NAMESRV_ADDR = "47.70.139.169.9876";
+    private static final String NAMESRV_ADDR = "47.107.139.169:9876";
 
     public static void main(String[] args) throws Exception{
 
@@ -24,10 +24,10 @@ public class ProviderDemo {
         for (int i = 0; i < 5; i++) {
 
             //1、创建消息
-            Message message = new Message("test_quick_topic", //主题
+            Message message = new Message("demo_quick_topic", //主题
                     "TagA", // 标签
                      "key" + i, // 唯一标识
-                    ("Hello Rocketmq" + i).getBytes());
+                    ("Hello Rocketmq" + i+"ss").getBytes());
 
             //2、发送消息
             SendResult sr = producer.send(message);
