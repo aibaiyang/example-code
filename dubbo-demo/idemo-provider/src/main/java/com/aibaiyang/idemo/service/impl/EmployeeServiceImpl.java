@@ -13,6 +13,7 @@ import java.util.List;
  * @Date 2019/8/14
  * @Description
  **/
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
