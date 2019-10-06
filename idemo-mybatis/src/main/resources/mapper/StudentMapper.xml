@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aibaiyang.idemo.mapper.StudentMapper" >
+
+  <resultMap id="BaseResultMap" type="com.aibaiyang.idemo.dto.StudentCourseOutput" >
+    <id column="s_id" property="id" jdbcType="INTEGER" />
+    <result column="s_name" property="name" jdbcType="VARCHAR" />
+    <collection property="courses" resultMap="CourseMapper.BaseResultMap" />
+  </resultMap>
+
+  <resultMap id="list" type="com.aibaiyang.idemo.dto.StudentCourseDTO">
+  </resultMap>
+
+  <!-- if标签示例，自定义对象示例   -->
+  <select id="findByName" parameterType="com.aibaiyang.idemo.entity.Student" resultMap="list">
+        SELECT
+            s.id id,s.name `name`,c.`name` course_name
+        FROM
+            student s
+        INNER JOIN course c ON s.course_id = c.id WHERE 1 = 1
+        <if test="name != null and !&quot;&quot;.equals(name.trim())">
+          and s.name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="courseId != null">
+          and s.course_id = #{courseId}
+        </if>
+  </select>
+
+<!--  一对多关系配置 -->
+  <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+            s.id s_id,
+            s.`name` s_name,
+            c.id c_id,
+            c.code,
+            c.`name` c_name
+        FROM
+            student s
+        INNER JOIN course c ON s.course_id = c.id
+  </select>
+
+   <sql id="constant">id,name</sql>
+
+   <select id="query" >
+       select <include refid="constant" /> from student
+   </select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aibaiyang.idemo.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.aibaiyang.idemo.entity.Account" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+  </resultMap>
+
+  <select id="findUserByName" parameterType="String" resultType="com.aibaiyang.idemo.entity.Account">
+        SELECT * FROM account WHERE name = #{name}
+  </select>
+
+</mapper>
