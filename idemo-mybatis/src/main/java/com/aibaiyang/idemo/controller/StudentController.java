@@ -48,6 +48,10 @@ public class StudentController {
         return pageInfo;
     }
 
+    /**
+     * 查询一对多关系的数据
+     * @return
+     */
     @GetMapping("/findAll")
     public List<StudentCourseOutput> findAll(){
         return studentService.findAll();
