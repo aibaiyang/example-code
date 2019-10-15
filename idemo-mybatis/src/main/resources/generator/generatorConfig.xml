@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--  对应配置文件  -->
+    <properties resource="application.yml"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!--这里修改成统一的Mapper父接口-->
+            <property name="mappers" value="com.aibaiyang.idemo.util.MyMapper"/>
+        </plugin>
+
+        <!--这里填写自己的数据库链接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.107.139.169:3306/test?characterEncoding=utf8"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!--这里填写生成的表实体类目录-->
+        <javaModelGenerator targetPackage= "com.aibaiyang.idemo.entity" targetProject="src/main/java"/>
+
+        <!--这里填写生成的表xml目录-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!--这里填写生成的表mapper目录-->
+        <javaClientGenerator targetPackage="com.aibaiyang.idemo.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <!--这里的%通配符表示库里面的所有表-->
+        <table tableName="%">
+            <!--mysql 配置-->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!--oracle 配置-->
+            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
+        </table>
+    </context>
+</generatorConfiguration>
