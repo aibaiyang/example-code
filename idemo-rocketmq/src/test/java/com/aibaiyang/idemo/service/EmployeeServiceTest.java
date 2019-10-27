@@ -18,11 +18,22 @@ public class EmployeeServiceTest {
     @Autowired
     private EmployeeService employeeService;
 
-    @Test
-    public void findByNameTest(){
+    @Autowired
+    private SourceDemo sourceDemo;
 
-        System.out.println(employeeService.findByName("gz"));
+
+    @Test
+    public void sendMessage(){
+
+        sourceDemo.sendTest();
 
     }
+
+//    @Test
+//    public void findByNameTest(){
+//
+//        System.out.println(employeeService.findByName("gz"));
+//
+//    }
 
 }
