@@ -1,5 +1,6 @@
 package com.aibaiyang.idemo.service.impl;
 
+import com.aibaiyang.idemo.dto.FindByStudentCodesDTO;
 import com.aibaiyang.idemo.dto.StudentCourseDTO;
 import com.aibaiyang.idemo.dto.StudentCourseOutput;
 import com.aibaiyang.idemo.entity.Student;
@@ -35,6 +36,12 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentCourseOutput> findAll() {
         return studentMapper.findAll();
+    }
+
+    @Override
+    public List<Student> findByStudentCodes(FindByStudentCodesDTO dto) {
+        List<Student> students =studentMapper.findByStudentCodes(dto);
+        return students;
     }
 
 

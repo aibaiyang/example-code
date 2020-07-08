@@ -45,4 +45,21 @@
        select <include refid="constant" /> from student
    </select>
 
+   <select id="findByStudentCodes" resultType="com.aibaiyang.idemo.entity.Student">
+       select id,code,name
+       from student
+       <where>
+           <if test="codesDTO.name!= null">
+               and name = #{codesDTO.name}
+           </if>
+           <if test="codesDTO.codes!= null and codesDTO.codes.size()>0">
+               and code in
+               <foreach collection="codesDTO.codes" item="code" index="index"  open="('" separator="','" close="')">
+                   ${code}
+               </foreach>
+           </if>
+       </where>
+
+   </select>
+
 </mapper>

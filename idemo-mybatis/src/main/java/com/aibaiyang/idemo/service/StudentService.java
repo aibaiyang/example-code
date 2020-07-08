@@ -1,5 +1,6 @@
 package com.aibaiyang.idemo.service;
 
+import com.aibaiyang.idemo.dto.FindByStudentCodesDTO;
 import com.aibaiyang.idemo.dto.StudentCourseDTO;
 import com.aibaiyang.idemo.dto.StudentCourseOutput;
 import com.aibaiyang.idemo.entity.Student;
@@ -33,5 +34,13 @@ public interface StudentService {
      * @return
      */
     List<StudentCourseOutput> findAll();
+
+    /**
+     * 通过代码数组查询
+     *
+     * @param dto
+     * @return
+     */
+    List<Student> findByStudentCodes(FindByStudentCodesDTO dto);
 
 }

@@ -1,5 +1,6 @@
 package com.aibaiyang.idemo.controller;
 
+import com.aibaiyang.idemo.dto.FindByStudentCodesDTO;
 import com.aibaiyang.idemo.dto.StudentCourseDTO;
 import com.aibaiyang.idemo.dto.StudentCourseOutput;
 import com.aibaiyang.idemo.entity.Student;
@@ -55,6 +56,16 @@ public class StudentController {
     @GetMapping("/findAll")
     public List<StudentCourseOutput> findAll(){
         return studentService.findAll();
+    }
+
+    /**
+     * 通过代码数组查询
+     * @param dto
+     * @return
+     */
+    @PostMapping("/findByStudentCodes")
+    public List<Student> findByStudentCodes(@RequestBody FindByStudentCodesDTO dto){
+        return studentService.findByStudentCodes(dto);
     }
 
 

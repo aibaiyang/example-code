@@ -10,6 +10,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String code;
+
     private String name;
 
     @Column(name = "course_id")
