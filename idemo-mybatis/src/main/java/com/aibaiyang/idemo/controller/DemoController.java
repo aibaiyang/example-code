@@ -1,6 +1,7 @@
 package com.aibaiyang.idemo.controller;
 
 import com.aibaiyang.idemo.annotation.LoginRequired;
+import com.aibaiyang.idemo.annotation.MyLog;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,16 @@ public class DemoController {
     @LoginRequired
     public void loginTest(){
         System.out.println("loginTest");
+    }
+
+    /**
+     * 日志注解测试
+     *
+     */
+    @RequestMapping("/logAnnotationTest")
+    @MyLog
+    public void logAnnotationTest(){
+        System.out.println("logAnnotationTest");
     }
 
 
