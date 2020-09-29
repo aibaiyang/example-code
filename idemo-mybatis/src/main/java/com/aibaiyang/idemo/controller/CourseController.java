@@ -3,10 +3,7 @@ package com.aibaiyang.idemo.controller;
 import com.aibaiyang.idemo.entity.Course;
 import com.aibaiyang.idemo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author zhong guo
@@ -21,6 +18,7 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping("/insert")
+    @ResponseBody
     public int insert(@RequestBody Course course){
 
         return courseService.insert(course);

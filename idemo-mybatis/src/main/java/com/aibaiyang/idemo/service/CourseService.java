@@ -16,4 +16,11 @@ public interface CourseService {
      */
     int insert(Course course);
 
+    /**
+     * 批量插入数据
+     *
+     * @return
+     */
+    int batchInset();
+
 }
