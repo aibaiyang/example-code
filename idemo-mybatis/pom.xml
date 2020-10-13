@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <mysql.version>5.1.21</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
     </properties>
 
     <dependencies>
@@ -168,7 +168,7 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.21</version>
+                        <version>8.0.16</version>
                     </dependency>
                     <dependency>
                         <groupId>tk.mybatis</groupId>
