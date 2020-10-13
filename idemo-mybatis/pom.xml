@@ -86,7 +86,6 @@
             <version>5.3.10</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -99,7 +98,56 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!-- 解决多环境报错 -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
+
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <package.environment>local</package.environment>
+                <war.name>mtorder-dubbo-container</war.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <package.environment>dev</package.environment>
+                <war.name>mtorder-dubbo-container</war.name>
+                <!--<activation>
+                    <activeByDefault>true</activeByDefault>
+                </activation>-->
+            </properties>
+
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <package.environment>test</package.environment>
+                <war.name>mtorder-dubbo-container</war.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <package.environment>staging</package.environment>
+                <war.name>mtorder-dubbo-container</war.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <package.environment>prod</package.environment>
+                <war.name>mtorder-dubbo-container</war.name>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
