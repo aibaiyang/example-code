@@ -15,12 +15,16 @@ public class ExecutorConfig {
     @Bean
     public ThreadPoolTaskExecutor getAsyncExecutor() {
 
-        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         // 设置核心线程数
-        taskExecutor.setCorePoolSize(5);// 线程池大小
-        taskExecutor.setKeepAliveSeconds(1000);// 空闲时间
-        taskExecutor.setMaxPoolSize(10);// 线程池最大线程数
-        taskExecutor.setQueueCapacity(25);// 最大等待任务数
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        // 线程池大小
+        taskExecutor.setCorePoolSize(5);
+        // 空闲时间
+        taskExecutor.setKeepAliveSeconds(1000);
+        // 线程池最大线程数
+        taskExecutor.setMaxPoolSize(10);
+        // 最大等待任务数
+        taskExecutor.setQueueCapacity(25);
         taskExecutor.initialize();
         return taskExecutor;
 

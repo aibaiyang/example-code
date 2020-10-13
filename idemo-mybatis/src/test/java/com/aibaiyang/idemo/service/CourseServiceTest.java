@@ -1,6 +1,6 @@
-package service;
+package com.aibaiyang.idemo.service;
 
-import com.aibaiyang.idemo.service.CourseService;
+import com.aibaiyang.idemo.IdemoApplicationTests;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Date 2020/9/29 18:44
  * @Description
  **/
-public class CourseServiceTest {
+public class CourseServiceTest extends IdemoApplicationTests {
 
     @Autowired
     private CourseService courseService;

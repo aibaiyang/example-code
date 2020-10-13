@@ -1,6 +1,5 @@
 package com.aibaiyang.idemo.service.impl;
 
-import cn.hutool.core.collection.ListUtil;
 import com.aibaiyang.idemo.entity.Course;
 import com.aibaiyang.idemo.mapper.CourseMapper;
 import com.aibaiyang.idemo.service.CourseService;
@@ -41,19 +40,20 @@ public class CourseServiceImpl implements CourseService {
         for (String course : courseLists) {
 
             threadPoolTaskExecutor.submit(() ->{
-
                 // 执行业务
                 System.out.println("课程：" + course);
-
+                if("english".equals(course)){
+                    throw new RuntimeException("课程错误！");
+                }
                 // 线程计数减1
                 countDownLatch.countDown();
-
             });
 
         }
 
         try {
-            countDownLatch.await(5000L , TimeUnit.SECONDS);
+            countDownLatch.await(5L , TimeUnit.SECONDS);
+            System.out.println("threadSum:" + countDownLatch.getCount());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
