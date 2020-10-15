@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Page<StudentCourseDTO> findByName(Student student) {
-//        logger.info("入参student={}" ,student);
+        logger.info("入参student={}" ,student);
         return studentMapper.findByName(student);
     }
 
